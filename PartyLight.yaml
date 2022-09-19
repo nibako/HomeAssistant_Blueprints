@@ -1,0 +1,47 @@
+alias: Pink Blue Loop
+sequence:
+  - repeat:
+      while:
+        - condition: state
+          entity_id: input_boolean.gender_reveal
+          state: 'on'
+      sequence:
+        - service: light.turn_on
+          target:
+            entity_id:
+              - light.under_cupboard_lightstrip
+              - light.dining_lightstrip
+              - light.kitchen_piano
+          data:
+            brightness_pct: 100
+            rgb_color:
+              - 255
+              - 109
+              - 255
+        - service: switch.turn_off
+          target:
+            entity_id: switch.kitchen_under_cupboard_lights
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 30
+            milliseconds: 0
+        - service: light.turn_on
+          target:
+            entity_id:
+              - light.under_cupboard_lightstrip
+              - light.dining_lightstrip
+              - light.kitchen_piano
+          data:
+            brightness_pct: 100
+            rgb_color:
+              - 188
+              - 212
+              - 230
+        - delay:
+            hours: 0
+            minutes: 1
+            seconds: 0
+            milliseconds: 0
+mode: single
+icon: mdi:baby
