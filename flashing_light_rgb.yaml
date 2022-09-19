@@ -5,7 +5,7 @@ blueprint:
 
     '
   domain: automation
-  source_url: https://community.home-assistant.io/t/simple-flashing-lights-via-on-off-and-delay-restore-previous-light-states/258099
+  source_url: https://github.com/nibako/HomeAssistant_Blueprints/blob/main/flashing_light_rgb.yaml
   input:
     activated:
       name: Activated
