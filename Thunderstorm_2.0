@@ -1,0 +1,76 @@
+alias: Thunder Lights
+description: ""
+trigger:
+  - platform: state
+    entity_id:
+      - input_boolean.thundereffect
+    to: "on"
+condition: []
+action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: group.mylights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 13
+      milliseconds: 0
+  - service: scene.create
+    data:
+      scene_id: lights
+      snapshot_entities:
+        - group.mylights
+  - service: light.turn_on
+    data:
+      transition: 0
+      rgb_color:
+        - 255
+        - 255
+        - 255
+      flash: short
+      brightness_pct: 100
+      brightness: 255
+    target:
+      entity_id: group.mylights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: scene.turn_on
+    target:
+      entity_id: scene.lights
+    metadata: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 19
+      milliseconds: 0
+  - service: scene.create
+    data:
+      scene_id: lights
+      snapshot_entities:
+        - group.mylights
+  - service: light.turn_on
+    data:
+      transition: 0
+      rgb_color:
+        - 255
+        - 255
+        - 255
+      flash: short
+      brightness_pct: 100
+      brightness: 255
+    target:
+      entity_id: group.mylights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: scene.turn_on
+    target:
+      entity_id: scene.lights
+    metadata: {}
+mode: restart
