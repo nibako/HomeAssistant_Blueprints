@@ -1,0 +1,51 @@
+alias: Thunder Lights
+description: ""
+trigger:
+  - platform: time_pattern
+    seconds: "10"
+condition:
+  - condition: state
+    entity_id: input_boolean.thundereffect
+    state: "on"
+action:
+  - service: light.turn_on
+    data:
+      rgb_color:
+        - 58
+        - 77
+        - 228
+      brightness_pct: 7
+    target:
+      entity_id: light.mylights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      transition: 0
+      rgb_color:
+        - 255
+        - 255
+        - 255
+      flash: short
+      brightness_pct: 100
+    target:
+      entity_id: light.mylights
+    alias: FLASH!
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      rgb_color:
+        - 58
+        - 77
+        - 228
+      brightness: 25
+    target:
+      entity_id: light.mylights
+mode: restart
